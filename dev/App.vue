@@ -157,6 +157,7 @@
             :min-date="'2018-08-28'"
             :months-to-show="2"
             :lang="lang"
+            :inline="true"
             :messages="languages"
             :show-action-buttons="true"
             :show-month-year-select="true"
@@ -201,20 +202,20 @@ export default {
           clear: 'Clear',
           cancel: 'Cancel',
           apply: 'Apply',
-          months: {
-            january: 'January',
-            february: 'February',
-            march: 'March',
-            april: 'April',
-            may: 'May',
-            june: 'June',
-            july: 'July',
-            august: 'August',
-            september: 'September',
-            october: 'October',
-            november: 'November',
-            december: 'December'
-          },
+          months: [
+            'January',
+            'February',
+            'March',
+            'April',
+            'May',
+            'June',
+            'July',
+            'August',
+            'September',
+            'October',
+            'November',
+            'December',
+          ],
           days: {
             monday: 'Mon',
             tuesday: 'Tue',
@@ -222,27 +223,27 @@ export default {
             thursday: 'Thu',
             friday: 'Fri',
             saturday: 'Sat',
-            sunday: 'Sun'
-          }
+            sunday: 'Sun',
+          },
         },
         fr: {
           clear: 'Réinitialiser',
           cancel: 'Annuler',
           apply: 'Appliquer',
-          months: {
-            january: 'Janvier',
-            february: 'Février',
-            march: 'Mars',
-            april: 'Avril',
-            may: 'Mai',
-            june: 'Juin',
-            july: 'Juillet',
-            august: 'Août',
-            september: 'Septembre',
-            october: 'Octobre',
-            november: 'Novembre',
-            december: 'Décembre'
-          },
+          months: [
+            'Janvier',
+            'Février',
+            'Mars',
+            'Avril',
+            'Mai',
+            'Juin',
+            'Juillet',
+            'Août',
+            'Septembre',
+            'Octobre',
+            'Novembre',
+            'Décembre',
+          ],
           days: {
             monday: 'Lun',
             tuesday: 'Mar',
@@ -250,8 +251,8 @@ export default {
             thursday: 'Jeu',
             friday: 'Ven',
             saturday: 'Sam',
-            sunday: 'Dim'
-          }
+            sunday: 'Dim',
+          },
         },
       },
       lang: 'fr',

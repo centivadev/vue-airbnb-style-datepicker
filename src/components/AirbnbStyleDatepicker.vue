@@ -489,6 +489,9 @@ export default {
         this.$emit('date-two-selected', '')
       }
     },
+    lang() {
+      this.generateMonths();
+    },
     trigger(newValue, oldValue) {
       if (newValue) {
         setTimeout(() => {
@@ -771,9 +774,9 @@ export default {
         this.colors.inRangeBorder = colors.inRangeBorder || this.colors.inRangeBorder
         this.colors.disabled = colors.disabled || this.colors.disabled
       }
-      if (this.$options.monthNames && this.$options.monthNames.length === 12) {
+      /* if (this.$options.monthNames && this.$options.monthNames.length === 12) {
         this.monthNames = copyObject(this.$options.monthNames)
-      }
+      } */
       if (this.$options.days && this.$options.days.length === 7) {
         this.days = copyObject(this.$options.days)
       }
