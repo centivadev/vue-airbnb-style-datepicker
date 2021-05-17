@@ -169,13 +169,13 @@
         </div>
       </div>
       <div class="asd__action-buttons" v-if="mode !== 'single' && showActionButtons">
-        <button @click="closeDatepickerCancel" type="button">{{ texts.cancel }}</button>
+        <button @click="closeDatepickerCancel" type="button">{{ translation.cancel }}</button>
         <button
           ref="apply-button"
           @click="apply"
           :style="{color: colors.selected}"
           type="button"
-        >{{ texts.apply }}</button>
+        >{{ translation.apply }}</button>
       </div>
       <div v-if="showShortcutsMenuTrigger" class="asd__keyboard-shortcuts-trigger-wrapper">
         <button
@@ -250,6 +250,8 @@ export default {
     },
     trigger: { type: Boolean, default: false },
     closeAfterSelect: { type: Boolean, default: false },
+    lang: { type: String, default: 'fr' },
+    messages: { type: Object, default: () => {}, },
   },
   data() {
     return {
@@ -281,7 +283,7 @@ export default {
         openKeyboardShortcutsMenu: 'Open keyboard shortcuts menu.',
         closeKeyboardShortcutsMenu: 'Close keyboard shortcuts menu',
       },
-      monthNames: [
+      /* monthNames: [
         'January',
         'February',
         'March',
@@ -294,9 +296,9 @@ export default {
         'October',
         'November',
         'December',
-      ],
+      ], */
       days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
-      daysShort: ['Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'],
+      // daysShort: ['Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'],
       texts: {
         apply: 'Apply',
         cancel: 'Cancel',
@@ -359,6 +361,15 @@ export default {
     }
   },
   computed: {
+    translation() {
+      return this.messages[this.lang];
+    },
+    daysShort() {
+      return this.translation.days;
+    },
+    monthNames() {
+      return this.translation.months
+    },
     wrapperClasses() {
       return {
         'asd__wrapper--datepicker-open': this.showDatepicker,

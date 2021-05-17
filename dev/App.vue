@@ -8,7 +8,7 @@
     </div>
     <div v-if="showDatepickers">
 
-      <div class="datepicker-container with-input">
+      <!--<div class="datepicker-container with-input">
         <h3>Range datepicker with input</h3>
         <div class="datepicker-trigger">
           <input
@@ -138,6 +138,38 @@
             @next-month="changeMonthMethod"
           />
         </div>
+      </div>-->
+      <div>
+        <h3>Range datepicker with input</h3>
+        <div class="datepicker-trigger">
+          <input
+            type="text"
+            id="datepicker-input-trigger"
+            :value="formatDates(inputDateOne, inputDateTwo)"
+            placeholder="Select dates"
+          >
+
+          <airbnb-style-datepicker
+            :trigger-element-id="'datepicker-input-trigger'"
+            :mode="'range'"
+            :date-one="inputDateOne"
+            :date-two="inputDateTwo"
+            :min-date="'2018-08-28'"
+            :months-to-show="2"
+            :lang="lang"
+            :messages="languages"
+            :show-action-buttons="true"
+            :show-month-year-select="true"
+            @date-one-selected="val => { inputDateOne = val }"
+            @date-two-selected="val => { inputDateTwo = val }"
+          />
+
+          <button
+            @click="lang = lang === 'fr' ? 'en' : 'fr'"
+          >
+            toggle lang
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -164,6 +196,65 @@ export default {
       alignRight: false,
       showDatepickers: true,
       trigger: false,
+      languages: {
+        en: {
+          clear: 'Clear',
+          cancel: 'Cancel',
+          apply: 'Apply',
+          months: {
+            january: 'January',
+            february: 'February',
+            march: 'March',
+            april: 'April',
+            may: 'May',
+            june: 'June',
+            july: 'July',
+            august: 'August',
+            september: 'September',
+            october: 'October',
+            november: 'November',
+            december: 'December'
+          },
+          days: {
+            monday: 'Mon',
+            tuesday: 'Tue',
+            wednesday: 'Wed',
+            thursday: 'Thu',
+            friday: 'Fri',
+            saturday: 'Sat',
+            sunday: 'Sun'
+          }
+        },
+        fr: {
+          clear: 'Réinitialiser',
+          cancel: 'Annuler',
+          apply: 'Appliquer',
+          months: {
+            january: 'Janvier',
+            february: 'Février',
+            march: 'Mars',
+            april: 'Avril',
+            may: 'Mai',
+            june: 'Juin',
+            july: 'Juillet',
+            august: 'Août',
+            september: 'Septembre',
+            october: 'Octobre',
+            november: 'Novembre',
+            december: 'Décembre'
+          },
+          days: {
+            monday: 'Lun',
+            tuesday: 'Mar',
+            wednesday: 'Mer',
+            thursday: 'Jeu',
+            friday: 'Ven',
+            saturday: 'Sam',
+            sunday: 'Dim'
+          }
+        },
+      },
+      lang: 'fr',
     }
   },
   computed: {
