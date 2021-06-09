@@ -271,7 +271,7 @@ export default {
         hoveredInRange: '#67f6ee',
       },
       sundayFirst: false,
-      ariaLabels: {
+      /* ariaLabels: {
         chooseDate: date => date,
         chooseStartDate: date => `Choose ${date} as your start date.`,
         chooseEndDate: date => `Choose ${date} as your end date.`,
@@ -283,7 +283,7 @@ export default {
         openKeyboardShortcutsMenu: 'Open keyboard shortcuts menu.',
         closeKeyboardShortcutsMenu: 'Close keyboard shortcuts menu',
       },
-      /* monthNames: [
+      monthNames: [
         'January',
         'February',
         'March',
@@ -363,6 +363,9 @@ export default {
   computed: {
     translation() {
       return this.messages[this.lang];
+    },
+	ariaLabels() {
+      return this.translation.ariaLabels;
     },
     daysShort() {
       return this.translation.days;
