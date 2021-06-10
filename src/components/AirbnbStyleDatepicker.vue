@@ -587,7 +587,17 @@ export default {
       return styles
     },
     getAriaLabelForDate(date) {
-      const dateLabel = format(date, this.dateLabelFormat)
+      const options = {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      };
+
+	  const frenchLabel = new Date(date).toLocaleDateString("fr-CA", options);
+	  const englishLabel = new Date(date).toLocaleDateString("en-CA", options);
+
+      const dateLabel = this.lang === 'fr' ? frenchLabel : englishLabel;
 
       const isDisabled = this.isDisabled(date)
       if (isDisabled) {
