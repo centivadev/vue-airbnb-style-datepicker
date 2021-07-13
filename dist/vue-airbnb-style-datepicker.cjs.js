@@ -243,19 +243,19 @@ return _c('td',{key:index + '_' + dayNumber,ref:("date-" + fullDate),refInFor:tr
         hoveredInRange: '#67f6ee',
       },
       sundayFirst: false,
-      ariaLabels: {
-        chooseDate: function (date) { return date; },
-        chooseStartDate: function (date) { return ("Choose " + date + " as your start date."); },
-        chooseEndDate: function (date) { return ("Choose " + date + " as your end date."); },
-        selectedDate: function (date) { return ("Selected. " + date); },
-        unavailableDate: function (date) { return ("Not available. " + date); },
+      /* ariaLabels: {
+        chooseDate: date => date,
+        chooseStartDate: date => `Choose ${date} as your start date.`,
+        chooseEndDate: date => `Choose ${date} as your end date.`,
+        selectedDate: date => `Selected. ${date}`,
+        unavailableDate: date => `Not available. ${date}`,
         previousMonth: 'Move backward to switch to the previous month.',
         nextMonth: 'Move forward to switch to the next month.',
         closeDatepicker: 'Close calendar',
         openKeyboardShortcutsMenu: 'Open keyboard shortcuts menu.',
         closeKeyboardShortcutsMenu: 'Close keyboard shortcuts menu',
       },
-      /* monthNames: [
+      monthNames: [
         'January',
         'February',
         'March',
@@ -334,6 +334,9 @@ return _c('td',{key:index + '_' + dayNumber,ref:("date-" + fullDate),refInFor:tr
   computed: {
     translation: function translation() {
       return this.messages[this.lang];
+    },
+	ariaLabels: function ariaLabels() {
+      return this.translation.ariaLabels;
     },
     daysShort: function daysShort() {
       return this.translation.days;
@@ -460,6 +463,9 @@ return _c('td',{key:index + '_' + dayNumber,ref:("date-" + fullDate),refInFor:tr
         this.$emit('date-two-selected', '');
       }
     },
+    lang: function lang() {
+      this.generateMonths();
+    },
     trigger: function trigger(newValue, oldValue) {
       var this$1 = this;
 
@@ -556,7 +562,17 @@ return _c('td',{key:index + '_' + dayNumber,ref:("date-" + fullDate),refInFor:tr
       return styles
     },
     getAriaLabelForDate: function getAriaLabelForDate(date) {
-      var dateLabel = format(date, this.dateLabelFormat);
+      var options = {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      };
+
+	  var frenchLabel = new Date(date).toLocaleDateString("fr-CA", options);
+	  var englishLabel = new Date(date).toLocaleDateString("en-CA", options);
+
+      var dateLabel = this.lang === 'fr' ? frenchLabel : englishLabel;
 
       var isDisabled = this.isDisabled(date);
       if (isDisabled) {
@@ -752,9 +768,9 @@ return _c('td',{key:index + '_' + dayNumber,ref:("date-" + fullDate),refInFor:tr
         this.colors.inRangeBorder = colors.inRangeBorder || this.colors.inRangeBorder;
         this.colors.disabled = colors.disabled || this.colors.disabled;
       }
-      if (this.$options.monthNames && this.$options.monthNames.length === 12) {
-        this.monthNames = copyObject(this.$options.monthNames);
-      }
+      /* if (this.$options.monthNames && this.$options.monthNames.length === 12) {
+        this.monthNames = copyObject(this.$options.monthNames)
+      } */
       if (this.$options.days && this.$options.days.length === 7) {
         this.days = copyObject(this.$options.days);
       }
