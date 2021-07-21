@@ -139,7 +139,7 @@
           />
         </div>
       </div>-->
-      <div>
+      <!-- <div>
         <h3>Range datepicker with input</h3>
         <div class="datepicker-trigger">
           <input
@@ -163,6 +163,39 @@
             :show-month-year-select="true"
             @date-one-selected="val => { inputDateOne = val }"
             @date-two-selected="val => { inputDateTwo = val }"
+          />
+
+          <button
+            @click="lang = lang === 'fr' ? 'en' : 'fr'"
+          >
+            toggle lang
+          </button>
+        </div>
+      </div> -->
+
+      <div>
+        <h3>Single datepicker with input and fullscreen mobile</h3>
+        <div class="datepicker-trigger">
+          <input
+            type="text"
+            id="datepicker-input-trigger"
+            :value="formatDates(inputDateOne, inputDateTwo)"
+            placeholder="Select dates"
+          >
+
+          <airbnb-style-datepicker
+            :trigger-element-id="'datepicker-input-trigger'"
+            :mode="'single'"
+            :date-one="inputDateOne"
+            :fullscreen-mobile="true"
+            :min-date="'2018-08-28'"
+            :months-to-show="1"
+            :lang="lang"
+            :inline="true"
+            :messages="languages"
+            :show-action-buttons="true"
+            :show-month-year-select="true"
+            @date-one-selected="val => { inputDateOne = val }"
           />
 
           <button

@@ -8,7 +8,7 @@
       :style="showFullscreen ? undefined : wrapperStyles"
       v-click-outside="handleClickOutside"
     >
-      <div class="asd__mobile-header asd__mobile-only" v-if="showFullscreen">
+      <div class="asd__mobile-header" v-if="showFullscreen">
         <button
           type="button"
           class="asd__mobile-close"
@@ -16,7 +16,7 @@
           :aria-label="ariaLabels.closeDatepicker"
         >
           <slot v-if="$slots['close-icon']" name="close-icon"></slot>
-          <div v-else class="asd__mobile-close-icon" aria-hidden="true">X</div>
+          <div v-else class="asd__mobile-close-icon">X</div>
         </button>
         <h3>{{ mobileHeader || mobileHeaderFallback }}</h3>
       </div>
@@ -358,6 +358,8 @@ export default {
       isMobile: undefined,
       isTablet: undefined,
       triggerElement: undefined,
+	  currentLocale: null,
+	  daysShort: null,
     }
   },
   computed: {
@@ -366,9 +368,6 @@ export default {
     },
 	ariaLabels() {
       return this.translation.ariaLabels;
-    },
-    daysShort() {
-      return this.translation.days;
     },
     monthNames() {
       return this.translation.months
@@ -511,6 +510,8 @@ export default {
     }
   },
   mounted() {
+    this.currentLocale = this.lang;
+    this.getDaysShort()
     this.viewportWidth = window.innerWidth + 'px'
     this.isMobile = window.innerWidth < 768
     this.isTablet = window.innerWidth >= 768 && window.innerWidth <= 1024
@@ -553,7 +554,16 @@ export default {
     this.triggerElement.removeEventListener('keyup', this.handleTriggerInput)
     this.triggerElement.removeEventListener('click', this._handleWindowClickEvent)
   },
+  updated() {
+    if (this.currentLocale !== this.lang) {
+        this.getDaysShort();
+		this.currentLocale = this.lang;
+    }
+	},
   methods: {
+	getDaysShort() {
+		this.daysShort = this.translation.days;
+	},
     getDayStyles(date) {
       const isSelected = this.isSelected(date)
       const isInRange = this.isInRange(date)
@@ -1065,9 +1075,10 @@ export default {
       }
     },
     closeDatepicker() {
-      if (this.inline) {
-        return
-      }
+	//* close button should always work *//
+    //   if (this.inline) {
+    //     return
+    //   }
       this.showDatepicker = false
       this.showKeyboardShortcutsMenu = false
       this.triggerElement.classList.remove('datepicker-open')
