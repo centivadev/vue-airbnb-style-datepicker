@@ -2724,10 +2724,9 @@
         }
       },
       closeDatepicker: function closeDatepicker() {
-  	//* close button should always work *//
-      //   if (this.inline) {
-      //     return
-      //   }
+        if (this.inline) {
+          return
+        }
         this.showDatepicker = false;
         this.showKeyboardShortcutsMenu = false;
         this.triggerElement.classList.remove('datepicker-open');

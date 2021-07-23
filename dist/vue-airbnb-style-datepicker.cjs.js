@@ -1060,10 +1060,9 @@ return _c('td',{key:index + '_' + dayNumber,ref:("date-" + fullDate),refInFor:tr
       }
     },
     closeDatepicker: function closeDatepicker() {
-	//* close button should always work *//
-    //   if (this.inline) {
-    //     return
-    //   }
+      if (this.inline) {
+        return
+      }
       this.showDatepicker = false;
       this.showKeyboardShortcutsMenu = false;
       this.triggerElement.classList.remove('datepicker-open');
