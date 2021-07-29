@@ -654,24 +654,22 @@ export default {
       } else if (this.shouldHandleInput(event, this.keys.arrowRight)) {
         const newDate = addDays(this.focusedDate, 1)
         /* 'en-CA' is entered as a parameter below to format newDate into yyyy-mm-dd date format */
-		console.log(newDate.toLocaleDateString('en-CA'), this.focusedDate);
         const newMonth = newDate.toLocaleDateString('en-CA').split('-')[1];
+		// Checking date format, changing it if necessary, then grabbing currentMonth number
 		const currentMonth = this.focusedDate.length === 10
 			? this.focusedDate.split('-')[1]
 			: this.focusedDate.toLocaleDateString('en-CA').split('-')[1];
-		console.log(newMonth, currentMonth);
 		if (newMonth === currentMonth) {
 			this.setFocusedDate(newDate)
 		}
       } else if (this.shouldHandleInput(event, this.keys.arrowLeft)) {
         const newDate = subDays(this.focusedDate, 1)
         /* 'en-CA' is entered as a parameter below to format newDate into yyyy-mm-dd date format */
-		console.log(newDate.toLocaleDateString('en-CA'), this.focusedDate);
         const newMonth = newDate.toLocaleDateString('en-CA').split('-')[1];
+		// Checking date format, changing it if necessary, then grabbing currentMonth number
 		const currentMonth = this.focusedDate.length === 10
 			? this.focusedDate.split('-')[1]
 			: this.focusedDate.toLocaleDateString('en-CA').split('-')[1];
-		console.log(newMonth, currentMonth);
 		if (newMonth === currentMonth) {
 			this.setFocusedDate(newDate)
 		}
