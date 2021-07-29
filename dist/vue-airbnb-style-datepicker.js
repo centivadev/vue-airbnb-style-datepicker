@@ -1907,34 +1907,7 @@
           hoveredInRange: '#67f6ee',
         },
         sundayFirst: false,
-        /* ariaLabels: {
-          chooseDate: date => date,
-          chooseStartDate: date => `Choose ${date} as your start date.`,
-          chooseEndDate: date => `Choose ${date} as your end date.`,
-          selectedDate: date => `Selected. ${date}`,
-          unavailableDate: date => `Not available. ${date}`,
-          previousMonth: 'Move backward to switch to the previous month.',
-          nextMonth: 'Move forward to switch to the next month.',
-          closeDatepicker: 'Close calendar',
-          openKeyboardShortcutsMenu: 'Open keyboard shortcuts menu.',
-          closeKeyboardShortcutsMenu: 'Close keyboard shortcuts menu',
-        },
-        monthNames: [
-          'January',
-          'February',
-          'March',
-          'April',
-          'May',
-          'June',
-          'July',
-          'August',
-          'September',
-          'October',
-          'November',
-          'December',
-        ], */
         days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
-        // daysShort: ['Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'],
         texts: {
           apply: 'Apply',
           cancel: 'Cancel',
@@ -2305,50 +2278,36 @@
           // if keyboard shortcutsMenu is open, then esc is the only key we want to have fire events
         } else if (this.shouldHandleInput(event, this.keys.arrowDown)) {
           var newDate = add_weeks(this.focusedDate, 1);
-          var changeMonths = !is_same_month(newDate, this.focusedDate);
           this.setFocusedDate(newDate);
-          if (changeMonths) { this.nextMonth(); }
         } else if (this.shouldHandleInput(event, this.keys.arrowUp)) {
           var newDate$1 = sub_weeks(this.focusedDate, 1);
-          var changeMonths$1 = !is_same_month(newDate$1, this.focusedDate);
           this.setFocusedDate(newDate$1);
-          if (changeMonths$1) { this.previousMonth(); }
         } else if (this.shouldHandleInput(event, this.keys.arrowRight)) {
           var newDate$2 = add_days(this.focusedDate, 1);
-          var changeMonths$2 = !is_same_month(newDate$2, this.focusedDate);
           this.setFocusedDate(newDate$2);
-          if (changeMonths$2) { this.nextMonth(); }
         } else if (this.shouldHandleInput(event, this.keys.arrowLeft)) {
           var newDate$3 = sub_days(this.focusedDate, 1);
-          var changeMonths$3 = !is_same_month(newDate$3, this.focusedDate);
           this.setFocusedDate(newDate$3);
-          if (changeMonths$3) { this.previousMonth(); }
         } else if (this.shouldHandleInput(event, this.keys.enter)) {
           // on enter key, only select the date if a date is currently in focus
           var target = event.target;
           if (!this.showKeyboardShortcutsMenu && target && target.tagName === 'TD') {
             this.selectDate(this.focusedDate);
           }
-        } else if (this.shouldHandleInput(event, this.keys.pgUp)) {
-          this.setFocusedDate(sub_months(this.focusedDate, 1));
-          this.previousMonth();
-        } else if (this.shouldHandleInput(event, this.keys.pgDn)) {
-          this.setFocusedDate(add_months(this.focusedDate, 1));
-          this.nextMonth();
         } else if (this.shouldHandleInput(event, this.keys.home)) {
           var newDate$4 = start_of_week(this.focusedDate, {
             weekStartsOn: this.sundayFirst ? 0 : 1,
           });
-          var changeMonths$4 = !is_same_month(newDate$4, this.focusedDate);
+          var changeMonths = !is_same_month(newDate$4, this.focusedDate);
           this.setFocusedDate(newDate$4);
-          if (changeMonths$4) { this.previousMonth(); }
+          if (changeMonths) { this.previousMonth(); }
         } else if (this.shouldHandleInput(event, this.keys.end)) {
           var newDate$5 = end_of_week(this.focusedDate, {
             weekStartsOn: this.sundayFirst ? 0 : 1,
           });
-          var changeMonths$5 = !is_same_month(newDate$5, this.focusedDate);
+          var changeMonths$1 = !is_same_month(newDate$5, this.focusedDate);
           this.setFocusedDate(newDate$5);
-          if (changeMonths$5) { this.nextMonth(); }
+          if (changeMonths$1) { this.nextMonth(); }
         } else if (this.shouldHandleInput(event, this.keys.questionMark)) {
           this.openKeyboardShortcutsMenu();
         }
