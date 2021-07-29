@@ -188,7 +188,7 @@
             :mode="'single'"
             :date-one="inputDateOne"
             :fullscreen-mobile="true"
-            :min-date="'2018-08-28'"
+            :min-date="'2021-07-28'"
             :months-to-show="1"
             :lang="lang"
             :inline="true"

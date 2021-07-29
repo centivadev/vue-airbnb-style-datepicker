@@ -637,10 +637,20 @@ export default {
         // if keyboard shortcutsMenu is open, then esc is the only key we want to have fire events
       } else if (this.shouldHandleInput(event, this.keys.arrowDown)) {
         const newDate = addWeeks(this.focusedDate, 1)
-        this.setFocusedDate(newDate)
+        /* 'en-CA' is entered as a parameter below to format newDate into yyyy-mm-dd date format */
+        const newMonth = newDate.toLocaleDateString('en-CA').split('-')[1];
+		const currentMonth = this.focusedDate.split('-')[1];
+		if (newMonth === currentMonth) {
+			this.setFocusedDate(newDate)
+		}
       } else if (this.shouldHandleInput(event, this.keys.arrowUp)) {
         const newDate = subWeeks(this.focusedDate, 1)
-        this.setFocusedDate(newDate)
+        /* 'en-CA' is entered as a parameter below to format newDate into yyyy-mm-dd date format */
+        const newMonth = newDate.toLocaleDateString('en-CA').split('-')[1];
+		const currentMonth = this.focusedDate.split('-')[1];
+		if (newMonth === currentMonth) {
+			this.setFocusedDate(newDate)
+		}
       } else if (this.shouldHandleInput(event, this.keys.arrowRight)) {
         const newDate = addDays(this.focusedDate, 1)
         this.setFocusedDate(newDate)
