@@ -653,10 +653,20 @@ export default {
 		}
       } else if (this.shouldHandleInput(event, this.keys.arrowRight)) {
         const newDate = addDays(this.focusedDate, 1)
-        this.setFocusedDate(newDate)
+        /* 'en-CA' is entered as a parameter below to format newDate into yyyy-mm-dd date format */
+        const newMonth = newDate.toLocaleDateString('en-CA').split('-')[1];
+		const currentMonth = this.focusedDate.split('-')[1];
+		if (newMonth === currentMonth) {
+			this.setFocusedDate(newDate)
+		}
       } else if (this.shouldHandleInput(event, this.keys.arrowLeft)) {
         const newDate = subDays(this.focusedDate, 1)
-        this.setFocusedDate(newDate)
+        /* 'en-CA' is entered as a parameter below to format newDate into yyyy-mm-dd date format */
+        const newMonth = newDate.toLocaleDateString('en-CA').split('-')[1];
+		const currentMonth = this.focusedDate.split('-')[1];
+		if (newMonth === currentMonth) {
+			this.setFocusedDate(newDate)
+		}
       } else if (this.shouldHandleInput(event, this.keys.enter)) {
         // on enter key, only select the date if a date is currently in focus
         const target = event.target
