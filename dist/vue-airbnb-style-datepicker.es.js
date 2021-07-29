@@ -626,10 +626,20 @@ return _c('td',{key:index + '_' + dayNumber,ref:("date-" + fullDate),refInFor:tr
 		}
       } else if (this.shouldHandleInput(event, this.keys.arrowRight)) {
         var newDate$2 = addDays(this.focusedDate, 1);
-        this.setFocusedDate(newDate$2);
+        /* 'en-CA' is entered as a parameter below to format newDate into yyyy-mm-dd date format */
+        var newMonth$2 = newDate$2.toLocaleDateString('en-CA').split('-')[1];
+		var currentMonth$2 = this.focusedDate.split('-')[1];
+		if (newMonth$2 === currentMonth$2) {
+			this.setFocusedDate(newDate$2);
+		}
       } else if (this.shouldHandleInput(event, this.keys.arrowLeft)) {
         var newDate$3 = subDays(this.focusedDate, 1);
-        this.setFocusedDate(newDate$3);
+        /* 'en-CA' is entered as a parameter below to format newDate into yyyy-mm-dd date format */
+        var newMonth$3 = newDate$3.toLocaleDateString('en-CA').split('-')[1];
+		var currentMonth$3 = this.focusedDate.split('-')[1];
+		if (newMonth$3 === currentMonth$3) {
+			this.setFocusedDate(newDate$3);
+		}
       } else if (this.shouldHandleInput(event, this.keys.enter)) {
         // on enter key, only select the date if a date is currently in focus
         var target = event.target;
