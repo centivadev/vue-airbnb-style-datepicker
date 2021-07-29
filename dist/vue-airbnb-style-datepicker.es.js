@@ -610,10 +610,20 @@ return _c('td',{key:index + '_' + dayNumber,ref:("date-" + fullDate),refInFor:tr
         // if keyboard shortcutsMenu is open, then esc is the only key we want to have fire events
       } else if (this.shouldHandleInput(event, this.keys.arrowDown)) {
         var newDate = addWeeks(this.focusedDate, 1);
-        this.setFocusedDate(newDate);
+        /* 'en-CA' is entered as a parameter below to format newDate into yyyy-mm-dd date format */
+        var newMonth = newDate.toLocaleDateString('en-CA').split('-')[1];
+		var currentMonth = this.focusedDate.split('-')[1];
+		if (newMonth === currentMonth) {
+			this.setFocusedDate(newDate);
+		}
       } else if (this.shouldHandleInput(event, this.keys.arrowUp)) {
         var newDate$1 = subWeeks(this.focusedDate, 1);
-        this.setFocusedDate(newDate$1);
+        /* 'en-CA' is entered as a parameter below to format newDate into yyyy-mm-dd date format */
+        var newMonth$1 = newDate$1.toLocaleDateString('en-CA').split('-')[1];
+		var currentMonth$1 = this.focusedDate.split('-')[1];
+		if (newMonth$1 === currentMonth$1) {
+			this.setFocusedDate(newDate$1);
+		}
       } else if (this.shouldHandleInput(event, this.keys.arrowRight)) {
         var newDate$2 = addDays(this.focusedDate, 1);
         this.setFocusedDate(newDate$2);
