@@ -271,34 +271,7 @@ export default {
         hoveredInRange: '#67f6ee',
       },
       sundayFirst: false,
-      /* ariaLabels: {
-        chooseDate: date => date,
-        chooseStartDate: date => `Choose ${date} as your start date.`,
-        chooseEndDate: date => `Choose ${date} as your end date.`,
-        selectedDate: date => `Selected. ${date}`,
-        unavailableDate: date => `Not available. ${date}`,
-        previousMonth: 'Move backward to switch to the previous month.',
-        nextMonth: 'Move forward to switch to the next month.',
-        closeDatepicker: 'Close calendar',
-        openKeyboardShortcutsMenu: 'Open keyboard shortcuts menu.',
-        closeKeyboardShortcutsMenu: 'Close keyboard shortcuts menu',
-      },
-      monthNames: [
-        'January',
-        'February',
-        'March',
-        'April',
-        'May',
-        'June',
-        'July',
-        'August',
-        'September',
-        'October',
-        'November',
-        'December',
-      ], */
       days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
-      // daysShort: ['Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'],
       texts: {
         apply: 'Apply',
         cancel: 'Cancel',
@@ -664,36 +637,22 @@ export default {
         // if keyboard shortcutsMenu is open, then esc is the only key we want to have fire events
       } else if (this.shouldHandleInput(event, this.keys.arrowDown)) {
         const newDate = addWeeks(this.focusedDate, 1)
-        const changeMonths = !isSameMonth(newDate, this.focusedDate)
         this.setFocusedDate(newDate)
-        if (changeMonths) this.nextMonth()
       } else if (this.shouldHandleInput(event, this.keys.arrowUp)) {
         const newDate = subWeeks(this.focusedDate, 1)
-        const changeMonths = !isSameMonth(newDate, this.focusedDate)
         this.setFocusedDate(newDate)
-        if (changeMonths) this.previousMonth()
       } else if (this.shouldHandleInput(event, this.keys.arrowRight)) {
         const newDate = addDays(this.focusedDate, 1)
-        const changeMonths = !isSameMonth(newDate, this.focusedDate)
         this.setFocusedDate(newDate)
-        if (changeMonths) this.nextMonth()
       } else if (this.shouldHandleInput(event, this.keys.arrowLeft)) {
         const newDate = subDays(this.focusedDate, 1)
-        const changeMonths = !isSameMonth(newDate, this.focusedDate)
         this.setFocusedDate(newDate)
-        if (changeMonths) this.previousMonth()
       } else if (this.shouldHandleInput(event, this.keys.enter)) {
         // on enter key, only select the date if a date is currently in focus
         const target = event.target
         if (!this.showKeyboardShortcutsMenu && target && target.tagName === 'TD') {
           this.selectDate(this.focusedDate)
         }
-      } else if (this.shouldHandleInput(event, this.keys.pgUp)) {
-        this.setFocusedDate(subMonths(this.focusedDate, 1))
-        this.previousMonth()
-      } else if (this.shouldHandleInput(event, this.keys.pgDn)) {
-        this.setFocusedDate(addMonths(this.focusedDate, 1))
-        this.nextMonth()
       } else if (this.shouldHandleInput(event, this.keys.home)) {
         const newDate = startOfWeek(this.focusedDate, {
           weekStartsOn: this.sundayFirst ? 0 : 1,
