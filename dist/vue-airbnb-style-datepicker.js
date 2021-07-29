@@ -2297,7 +2297,9 @@
           /* 'en-CA' is entered as a parameter below to format newDate into yyyy-mm-dd date format */
   		console.log(newDate$2.toLocaleDateString('en-CA'), this.focusedDate);
           var newMonth$2 = newDate$2.toLocaleDateString('en-CA').split('-')[1];
-  		var currentMonth$2 = this.focusedDate.split('-')[1];
+  		var currentMonth$2 = this.focusedDate.length === 10
+  			? this.focusedDate.split('-')[1]
+  			: this.focusedDate.toLocaleDateString('en-CA').split('-')[1];
   		console.log(newMonth$2, currentMonth$2);
   		if (newMonth$2 === currentMonth$2) {
   			this.setFocusedDate(newDate$2);
@@ -2307,7 +2309,9 @@
           /* 'en-CA' is entered as a parameter below to format newDate into yyyy-mm-dd date format */
   		console.log(newDate$3.toLocaleDateString('en-CA'), this.focusedDate);
           var newMonth$3 = newDate$3.toLocaleDateString('en-CA').split('-')[1];
-  		var currentMonth$3 = this.focusedDate.split('-')[1];
+  		var currentMonth$3 = this.focusedDate.length === 10
+  			? this.focusedDate.split('-')[1]
+  			: this.focusedDate.toLocaleDateString('en-CA').split('-')[1];
   		console.log(newMonth$3, currentMonth$3);
   		if (newMonth$3 === currentMonth$3) {
   			this.setFocusedDate(newDate$3);
