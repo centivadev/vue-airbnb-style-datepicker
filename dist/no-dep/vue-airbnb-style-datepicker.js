@@ -901,6 +901,8 @@
         this.focusedDate = formattedDate;
         var dateElement = this.$refs[("date-" + formattedDate)];
         // handle .focus() on ie11 by adding a short timeout
+        console.log(this.focusedDate);
+        console.log(this.$refs);
         setTimeout(function() {
           if (dateElement && dateElement.length && dateElement[0]) {
               dateElement[0].focus();
