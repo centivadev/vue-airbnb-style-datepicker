@@ -910,11 +910,16 @@ export default {
       // handle .focus() on ie11 by adding a short timeout
       console.log(this.focusedDate);
       console.log(this.$refs);
-      setTimeout(function() {
+      /*setTimeout(function() {
         if (dateElement && dateElement.length && dateElement[0]) {
             dateElement[0].focus()
         }
-      }, 10)
+      }, 10)*/
+      if (dateElement && dateElement.length && dateElement[0]) {
+        setTimeout(function() {
+              dateElement[0].focus()
+        }, 10)
+      }
     },
     resetFocusedDate(setToFirst) {
       if (this.focusedDate && !this.isDateVisible(this.focusedDate)) {
