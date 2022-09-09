@@ -904,7 +904,7 @@
         if (dateElement && dateElement.length && dateElement[0]) {
           setTimeout(function() {
             dateElement[0].focus();
-          }, 10);
+          }, 50);
         }
       },
       resetFocusedDate: function resetFocusedDate(setToFirst) {

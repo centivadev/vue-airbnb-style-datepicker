@@ -888,7 +888,7 @@ return _c('td',{key:index + '_' + dayNumber,ref:("date-" + fullDate),refInFor:tr
       if (dateElement && dateElement.length && dateElement[0]) {
         setTimeout(function() {
           dateElement[0].focus();
-        }, 10);
+        }, 50);
       }
     },
     resetFocusedDate: function resetFocusedDate(setToFirst) {
