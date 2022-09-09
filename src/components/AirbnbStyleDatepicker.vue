@@ -641,6 +641,7 @@ export default {
         const newMonth = newDate.toLocaleDateString('en-CA').split('-')[1];
 		const currentMonth = this.focusedDate.split('-')[1];
 		if (newMonth === currentMonth) {
+      console.log('handleKeyboardInput 1:', newDate)
 			this.setFocusedDate(newDate)
 		}
       } else if (this.shouldHandleInput(event, this.keys.arrowUp)) {
@@ -649,6 +650,7 @@ export default {
         const newMonth = newDate.toLocaleDateString('en-CA').split('-')[1];
 		const currentMonth = this.focusedDate.split('-')[1];
 		if (newMonth === currentMonth) {
+      console.log('handleKeyboardInput 2:', newDate)
 			this.setFocusedDate(newDate)
 		}
       } else if (this.shouldHandleInput(event, this.keys.arrowRight)) {
@@ -660,6 +662,7 @@ export default {
 			? this.focusedDate.split('-')[1]
 			: this.focusedDate.toLocaleDateString('en-CA').split('-')[1];
 		if (newMonth === currentMonth) {
+      console.log('handleKeyboardInput 3:', newDate)
 			this.setFocusedDate(newDate)
 		}
       } else if (this.shouldHandleInput(event, this.keys.arrowLeft)) {
@@ -671,6 +674,7 @@ export default {
 			? this.focusedDate.split('-')[1]
 			: this.focusedDate.toLocaleDateString('en-CA').split('-')[1];
 		if (newMonth === currentMonth) {
+      console.log('handleKeyboardInput 4:', newDate)
 			this.setFocusedDate(newDate)
 		}
       } else if (this.shouldHandleInput(event, this.keys.enter)) {
@@ -684,6 +688,7 @@ export default {
           weekStartsOn: this.sundayFirst ? 0 : 1,
         })
         const changeMonths = !isSameMonth(newDate, this.focusedDate)
+        console.log('handleKeyboardInput 5:', newDate)
         this.setFocusedDate(newDate)
         if (changeMonths) this.previousMonth()
       } else if (this.shouldHandleInput(event, this.keys.end)) {
@@ -691,6 +696,7 @@ export default {
           weekStartsOn: this.sundayFirst ? 0 : 1,
         })
         const changeMonths = !isSameMonth(newDate, this.focusedDate)
+        console.log('handleKeyboardInput 6:', newDate)
         this.setFocusedDate(newDate)
         if (changeMonths) this.nextMonth()
       } else if (this.shouldHandleInput(event, this.keys.questionMark)) {
@@ -910,6 +916,7 @@ export default {
       // handle .focus() on ie11 by adding a short timeout
       console.log(this.focusedDate);
       console.log(this.$refs);
+      console.log(dateElement);
       /*setTimeout(function() {
         if (dateElement && dateElement.length && dateElement[0]) {
             dateElement[0].focus()
@@ -1055,6 +1062,7 @@ export default {
       this.initialDate2 = this.dateTwo
       this.$emit('opened')
       this.$nextTick(() => {
+        console.log('openDatepicker:', this.focusedDate)
         if (!this.inline) this.setFocusedDate(this.focusedDate)
       })
     },
@@ -1082,6 +1090,7 @@ export default {
     },
     closeKeyboardShortcutsMenu() {
       this.showKeyboardShortcutsMenu = false
+      console.log('closeKeyboardShortcutsMenu:', this.focusedDate)
       this.$nextTick(() => this.setFocusedDate(this.focusedDate))
     },
     apply() {
