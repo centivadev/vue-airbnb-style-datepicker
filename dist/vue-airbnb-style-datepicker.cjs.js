@@ -889,7 +889,7 @@ return _c('td',{key:index + '_' + dayNumber,ref:("date-" + fullDate),refInFor:tr
       this.focusedDate = formattedDate;
       var dateElement = this.$refs[("date-" + formattedDate)];
       // handle .focus() on ie11 by adding a short timeout
-      if (dateElement && dateElement.length) {
+      if (dateElement && dateElement.length && dateElement[0]) {
         setTimeout(function() {
           dateElement[0].focus();
         }, 10);
