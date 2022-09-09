@@ -903,6 +903,7 @@
         // handle .focus() on ie11 by adding a short timeout
         if (dateElement && dateElement.length && dateElement[0]) {
           setTimeout(function() {
+            console.log(dateElement[0]);
             dateElement[0].focus();
           }, 50);
         }
