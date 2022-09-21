@@ -618,7 +618,6 @@ return _c('td',{key:index + '_' + dayNumber,ref:("date-" + fullDate),refInFor:tr
         var newMonth = newDate.toLocaleDateString('en-CA').split('-')[1];
 		var currentMonth = this.focusedDate.split('-')[1];
 		if (newMonth === currentMonth) {
-      console.log('handleKeyboardInput 1:', newDate);
 			this.setFocusedDate(newDate);
 		}
       } else if (this.shouldHandleInput(event, this.keys.arrowUp)) {
@@ -627,7 +626,6 @@ return _c('td',{key:index + '_' + dayNumber,ref:("date-" + fullDate),refInFor:tr
         var newMonth$1 = newDate$1.toLocaleDateString('en-CA').split('-')[1];
 		var currentMonth$1 = this.focusedDate.split('-')[1];
 		if (newMonth$1 === currentMonth$1) {
-      console.log('handleKeyboardInput 2:', newDate$1);
 			this.setFocusedDate(newDate$1);
 		}
       } else if (this.shouldHandleInput(event, this.keys.arrowRight)) {
@@ -639,7 +637,6 @@ return _c('td',{key:index + '_' + dayNumber,ref:("date-" + fullDate),refInFor:tr
 			? this.focusedDate.split('-')[1]
 			: this.focusedDate.toLocaleDateString('en-CA').split('-')[1];
 		if (newMonth$2 === currentMonth$2) {
-      console.log('handleKeyboardInput 3:', newDate$2);
 			this.setFocusedDate(newDate$2);
 		}
       } else if (this.shouldHandleInput(event, this.keys.arrowLeft)) {
@@ -651,7 +648,6 @@ return _c('td',{key:index + '_' + dayNumber,ref:("date-" + fullDate),refInFor:tr
 			? this.focusedDate.split('-')[1]
 			: this.focusedDate.toLocaleDateString('en-CA').split('-')[1];
 		if (newMonth$3 === currentMonth$3) {
-      console.log('handleKeyboardInput 4:', newDate$3);
 			this.setFocusedDate(newDate$3);
 		}
       } else if (this.shouldHandleInput(event, this.keys.enter)) {
@@ -665,7 +661,6 @@ return _c('td',{key:index + '_' + dayNumber,ref:("date-" + fullDate),refInFor:tr
           weekStartsOn: this.sundayFirst ? 0 : 1,
         });
         var changeMonths = !isSameMonth(newDate$4, this.focusedDate);
-        console.log('handleKeyboardInput 5:', newDate$4);
         this.setFocusedDate(newDate$4);
         if (changeMonths) { this.previousMonth(); }
       } else if (this.shouldHandleInput(event, this.keys.end)) {
@@ -673,7 +668,6 @@ return _c('td',{key:index + '_' + dayNumber,ref:("date-" + fullDate),refInFor:tr
           weekStartsOn: this.sundayFirst ? 0 : 1,
         });
         var changeMonths$1 = !isSameMonth(newDate$5, this.focusedDate);
-        console.log('handleKeyboardInput 6:', newDate$5);
         this.setFocusedDate(newDate$5);
         if (changeMonths$1) { this.nextMonth(); }
       } else if (this.shouldHandleInput(event, this.keys.questionMark)) {
@@ -895,14 +889,6 @@ return _c('td',{key:index + '_' + dayNumber,ref:("date-" + fullDate),refInFor:tr
       this.focusedDate = formattedDate;
       var dateElement = this.$refs[("date-" + formattedDate)];
       // handle .focus() on ie11 by adding a short timeout
-      console.log(this.focusedDate);
-      console.log(this.$refs);
-      console.log(dateElement);
-      /*setTimeout(function() {
-        if (dateElement && dateElement.length && dateElement[0]) {
-            dateElement[0].focus()
-        }
-      }, 10)*/
       if (dateElement && dateElement.length && dateElement[0]) {
         setTimeout(function() {
               dateElement[0].focus();
@@ -1047,7 +1033,6 @@ return _c('td',{key:index + '_' + dayNumber,ref:("date-" + fullDate),refInFor:tr
       this.initialDate2 = this.dateTwo;
       this.$emit('opened');
       this.$nextTick(function () {
-        console.log('openDatepicker:', this$1.focusedDate);
         if (!this$1.inline) { this$1.setFocusedDate(this$1.focusedDate); }
       });
     },
@@ -1077,7 +1062,6 @@ return _c('td',{key:index + '_' + dayNumber,ref:("date-" + fullDate),refInFor:tr
       var this$1 = this;
 
       this.showKeyboardShortcutsMenu = false;
-      console.log('closeKeyboardShortcutsMenu:', this.focusedDate);
       this.$nextTick(function () { return this$1.setFocusedDate(this$1.focusedDate); });
     },
     apply: function apply() {
