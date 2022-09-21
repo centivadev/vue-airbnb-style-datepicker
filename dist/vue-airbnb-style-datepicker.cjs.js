@@ -894,8 +894,10 @@ return _c('td',{key:index + '_' + dayNumber,ref:("date-" + fullDate),refInFor:tr
           try {
               dateElement[0].focus();
           } catch (e) {
-            console.log(dateElement);
-            console.log(e);
+            console.log('formattedDate', formattedDate);
+            console.log('this.$refs', this.$refs);
+            console.log('dateElement', dateElement);
+            console.error(e);
           }
         }, 10);
       }
