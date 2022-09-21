@@ -891,7 +891,12 @@ return _c('td',{key:index + '_' + dayNumber,ref:("date-" + fullDate),refInFor:tr
       // handle .focus() on ie11 by adding a short timeout
       if (dateElement && dateElement.length && dateElement[0]) {
         setTimeout(function() {
+          try {
               dateElement[0].focus();
+          } catch (e) {
+            console.log(dateElement);
+            console.log(e);
+          }
         }, 10);
       }
     },
