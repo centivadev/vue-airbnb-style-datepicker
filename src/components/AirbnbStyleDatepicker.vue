@@ -907,22 +907,9 @@ export default {
       const formattedDate = format(date, this.dateFormat)
       this.focusedDate = formattedDate
       const dateElement = this.$refs[`date-${formattedDate}`]
-      // handle .focus() on ie11 by adding a short timeout
       if (dateElement && dateElement.length && dateElement[0]) {
         dateElement[0].focus()
       }
-      /*if (dateElement && dateElement.length && dateElement[0]) {
-        setTimeout(function() {
-          try {
-              dateElement[0].focus()
-          } catch (e) {
-            console.log('formattedDate', formattedDate)
-            console.log('this.$refs', this.$refs)
-            console.log('dateElement', dateElement)
-            console.error(e)
-          }
-        }, 10)
-      }*/
     },
     resetFocusedDate(setToFirst) {
       if (this.focusedDate && !this.isDateVisible(this.focusedDate)) {
